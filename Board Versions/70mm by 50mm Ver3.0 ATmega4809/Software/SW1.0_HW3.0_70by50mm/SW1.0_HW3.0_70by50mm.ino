@@ -27,6 +27,8 @@
 #include <Adafruit_SSD1306.h>
 #include <EEPROM.h>
 #include <Bounce2.h>
+#include "thermal.h"
+#include "device_config.h"
 
 /**
  * Uncomment the following line to use Fast PWM - around 63kHz.
@@ -51,7 +53,7 @@
 
 //Version Definitions
 static const PROGMEM float hw = 3.0;
-static const PROGMEM float sw = 1.0;
+static const PROGMEM float sw = 1.1;
 
 //Screen Definitions
 #define SCREEN_WIDTH 128
@@ -63,7 +65,6 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1); //Create Displ
 #define mosfet PIN_PC3
 #define upsw PIN_PD1
 #define dnsw PIN_PD0
-#define temp PIN_PF5 
 #define vcc PIN_PF3
 
 Bounce2::Button upButton;
@@ -155,12 +156,15 @@ static const uint8_t tick_width = 16;
 static const uint8_t tick_height = 15;
 
 void setup() {
+
+  analogReadResolution(ANALOG_READ_RES);
   
   //Pin Direction control
   pinMode(mosfet,OUTPUT);
   digitalWrite(mosfet,LOW);
-  pinMode(temp,INPUT);
   pinMode(vcc,INPUT);
+
+  initializeTemperatureSensor();
 
   upButton.attach(upsw);
   upButton.setPressedState(LOW);
@@ -313,7 +317,7 @@ bool heat(byte maxTemp) {
     }
 
     //Measure Values
-    t = getTemp();
+    t = getHotplateTemperature();
     v = getVolts();
 
     //Reflow Profile
@@ -446,7 +450,7 @@ void cancelledTimer() { //Cancelled via 5 minute Time Limit
 
 void coolDown() {
   
-  float t = getTemp(); //Used to store current temperature
+  float t = getHotplateTemperature(); //Used to store current temperature
   
   //Wait to return on any button press, or temp below threshold
   while(!downButton.pressed() || !downButton.pressed() && t > 45.00) {
@@ -459,7 +463,7 @@ void coolDown() {
     display.drawLine( 25, 12, 103, 12, SSD1306_WHITE );
     display.setCursor(25,14);
     display.println("  Still Hot");
-    t = getTemp();
+    t = getHotplateTemperature();
       if( t >= 100 ) { display.setCursor(49,22); }
       else           { display.setCursor(52,22); }
       display.print(F("~"));
@@ -496,14 +500,6 @@ void completed() {
     upButton.update();
     downButton.update();
   }
-}
-
-float getTemp(){
-  float t = 0;
-  for (byte i = 0; i < 100; i++){ //Poll temp reading 100 times
-    t = t + analogRead(temp);
-  }
-  return ((t / 100) * -1.46) + 434; //Average, convert to C, and return
 }
 
 float getVolts(){
