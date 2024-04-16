@@ -13,7 +13,7 @@ The ATmega4809 is UPDI programmed so you will need a UPDI programmer. If you are
 5) Obtain a UPDI programmer. If you don't know what that is or you don't have one, your easiest option is probably to use an Arduino board with the [JTAG2UPDI](https://github.com/ElTangas/jtag2updi) sketch loaded onto it.
 
 ### UPDI Programming with JTAG2UPDI
-If you already have a purpose built UPDI programmer and know how to use it, you can skip this section and just use your existing UPDI programmer. For the rest of us, if you have a spare Arduino board lying around, you can program it to play the role of a UPDI programmer. I used an Arduino Nano, but many other Arduino compatible boards should also work.
+If you already have a purpose built UPDI programmer and know how to use it, you can skip this section and just use your existing UPDI programmer. For the rest of us, if you have a spare Arduino board lying around, you can program it to play the role of a UPDI programmer. I used an Arduino Nano, but many other Arduino compatible boards should also work. Note that if you are using an Arduino board you need to disable the autoreset feature when using it as a programmer (ie. not during the initial programming with the JTAG2UPDI sketch, but after that). There are two main ways to do this, both of which aim to prevent the reset pin from being pulled high. Option 1, which is the option I used, is to place a large capacitance (around 10uF or bigger) between the ground and reset pins. Option 2 is to place a resistor less than 1k between reset and ground - something like 330 ohms might work although I haven't tried this option.
 1) Download the [JTAG2UPDI](https://github.com/ElTangas/jtag2updi) code from Github.
 2) Rename the source directory to jtag2updi to make the Arduino IDE happy.
 3) Load the jtag2updi/jtag2updi.ino sketch into your Arduino IDE.
@@ -41,5 +41,4 @@ You should now have a UPDI programmer ready to go.
 5) Compile and upload.
 
 ### PWM Frequency
-
 By default, the PWM control of the heating element operates at the default PWM frequency used by Arduinos of around 490Hz. This can be increased to roughly 63kHz by uncommenting the definition of the FAST_PWM macro. Note that with current hardware designs, this will likely result in overheating of the input capacitor. The circuit requires redesign to correct this fault. If FAST_PWM is enabled, this will also modify the messages on the screen to remind the user that the input capacitor may get hot.
