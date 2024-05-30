@@ -22,7 +22,7 @@ This design lacks safety features to limit the amount of power it may draw or th
 
 ## UPDATE!!!
 
-Join the [DISCORD!](https://discord.gg/YzhG6FcCRA)
+The old Discord server has been nuked by trolls due to a lack of anyone with admin privileges frequenting the server any more. We now have a [new Discord server](https://discord.gg/5wSnbg9q).
 
 Checkout the new Ver 3.0 design. Very similar to Ver 2.4 but now comes with ATmega4809 as its availability is much better than the 328p at the moment. Code is still in development but the board designs are available in the Board Versions Folder.
 
