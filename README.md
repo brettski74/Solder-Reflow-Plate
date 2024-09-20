@@ -2,7 +2,7 @@
 
 ###### By AfterEarth Ltd
 
-This is a largely unmodified version of the design by AfterEarthLTD that was also seen on a [GreatScott! video](https://github.com/DerSpatz/PCB-reflow-solder-heat-plate). I have made some tweaks to the software to get it to work on the ATMega4809 and also added instructions on how to build it and program it. It does work, but there are some problems with the design. I am working on newer designs but the best design out there today is probably the one by [DerSpatz](https://github.com/DerSpatz/PCB-reflow-solder-heat-plate)
+This is a largely unmodified version of the design by AfterEarthLTD that was also seen on a [GreatScott! video](https://www.youtube.com/watch?v=QarizoUnRfk). I have made some tweaks to the software to get it to work on the ATMega4809 and also added instructions on how to build it and program it. It does work, but there are some problems with the design. I am working on newer designs but the best design out there today is probably the one by [DerSpatz](https://github.com/DerSpatz/PCB-reflow-solder-heat-plate)
 
 ## WARNING!!!
 
