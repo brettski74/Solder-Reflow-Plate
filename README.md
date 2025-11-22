@@ -72,7 +72,3 @@ Here's hoping that it may be used to develop skills, build custom circuit boards
 All parts of this project are covered by a [MIT license](LICENSE).
 That means it is entirely open-source, so you get access to everything! (just without warranty or liability)
 Feel free to download, customise, hack, and commercialise to your nerdy heart's content.
-
-Want the **easy** life?!
-**Purchase** the default design above!
-Its fully functional, cheaper than customising, and helps to feed the creator's caffeine addiction 🙃
