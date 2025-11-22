@@ -2,7 +2,7 @@
 
 ###### By AfterEarth Ltd
 
-This is a largely unmodified version of the design by AfterEarthLTD that was also seen on a [GreatScott! video](https://www.youtube.com/watch?v=QarizoUnRfk). I have made some tweaks to the software to get it to work on the ATMega4809 and also added instructions on how to build it and program it. It does work, but there are some problems with the design. I am working on [newer designs](https://github.com/brettski74/Milton) but the best design out there today is probably the [arwidcool](https://github.com/arwidcool/Solder-Plate) design.
+This is a largely unmodified version of the design by AfterEarthLTD that was also seen on a [GreatScott! video](https://www.youtube.com/watch?v=QarizoUnRfk). I have made some tweaks to the software to get it to work on the ATMega4809 and also added instructions on how to build it and program it. It does work, but there are some problems with the design. I am working on [newer designs](https://github.com/brettski74/Milton) There is also the [arwidcool](https://github.com/arwidcool/Solder-Plate) design which is not mine, but has some improvements on the AfterEarthLTD design and is a fully embedded version without dependency on external hardware.
 
 ## WARNING!!!
 
